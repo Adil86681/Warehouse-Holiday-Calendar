@@ -7,39 +7,24 @@
 <style>
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
   :root {
-    --bg: #ffffff;
-    --bg-secondary: #f5f5f3;
-    --bg-tertiary: #eeecea;
-    --text: #1a1a18;
-    --text-secondary: #6b6a66;
-    --border: rgba(0,0,0,0.12);
-    --border-strong: rgba(0,0,0,0.22);
-    --blue-light: #E6F1FB;
-    --blue-mid: #B5D4F4;
-    --blue: #185FA5;
-    --blue-dark: #0C447C;
-    --radius-md: 8px;
-    --radius-lg: 12px;
+    --bg: #ffffff; --bg-secondary: #f5f5f3; --bg-tertiary: #eeecea;
+    --text: #1a1a18; --text-secondary: #6b6a66;
+    --border: rgba(0,0,0,0.12); --border-strong: rgba(0,0,0,0.22);
+    --blue-light: #E6F1FB; --blue-mid: #B5D4F4; --blue: #185FA5; --blue-dark: #0C447C;
+    --radius-md: 8px; --radius-lg: 12px;
   }
   @media (prefers-color-scheme: dark) {
     :root {
-      --bg: #1c1c1a;
-      --bg-secondary: #262624;
-      --bg-tertiary: #2e2e2b;
-      --text: #f0ede8;
-      --text-secondary: #9e9c96;
-      --border: rgba(255,255,255,0.12);
-      --border-strong: rgba(255,255,255,0.22);
-      --blue-light: #0c2e52;
-      --blue-mid: #0c447c;
-      --blue: #378ADD;
-      --blue-dark: #85B7EB;
+      --bg: #1c1c1a; --bg-secondary: #262624; --bg-tertiary: #2e2e2b;
+      --text: #f0ede8; --text-secondary: #9e9c96;
+      --border: rgba(255,255,255,0.12); --border-strong: rgba(255,255,255,0.22);
+      --blue-light: #0c2e52; --blue-mid: #0c447c; --blue: #378ADD; --blue-dark: #85B7EB;
     }
   }
   body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; background: var(--bg-tertiary); color: var(--text); min-height: 100vh; }
   .page { max-width: 1100px; margin: 0 auto; padding: 2rem 1.25rem 4rem; }
   .hdr { margin-bottom: 1.75rem; }
-  .hdr h1 { font-size: 22px; font-weight: 500; color: var(--text); margin-bottom: 4px; }
+  .hdr h1 { font-size: 22px; font-weight: 500; margin-bottom: 4px; }
   .hdr p { font-size: 14px; color: var(--text-secondary); }
   .controls { display: flex; flex-wrap: wrap; gap: 12px; align-items: flex-end; margin-bottom: 1.25rem; }
   .ctrl-group { display: flex; flex-direction: column; gap: 5px; }
@@ -61,20 +46,20 @@
   .stats { display: grid; grid-template-columns: repeat(auto-fit, minmax(120px, 1fr)); gap: 10px; margin-bottom: 1.5rem; }
   .stat { background: var(--bg); border: 0.5px solid var(--border); border-radius: var(--radius-md); padding: 12px 16px; }
   .stat-label { font-size: 11px; color: var(--text-secondary); margin-bottom: 6px; }
-  .stat-val { font-size: 24px; font-weight: 500; color: var(--text); }
+  .stat-val { font-size: 24px; font-weight: 500; }
   .legend { display: flex; flex-wrap: wrap; gap: 12px; margin-bottom: 1.5rem; }
   .legend-item { display: flex; align-items: center; gap: 6px; font-size: 12px; color: var(--text-secondary); }
-  .legend-swatch { width: 14px; height: 14px; border-radius: 3px; border: 0.5px solid var(--border); }
-  .swatch-all { background: var(--blue); border-color: var(--blue-dark); }
-  .swatch-some { background: var(--blue-light); border-color: var(--blue-mid); }
-  .swatch-wknd { background: #FFD8A8; border-color: #FFB870; }
-  .tooltip { position: fixed; background: var(--bg); border: 0.5px solid var(--border-strong); border-radius: var(--radius-md); padding: 8px 12px; font-size: 12px; color: var(--text); box-shadow: 0 4px 16px rgba(0,0,0,0.12); pointer-events: none; z-index: 9999; max-width: 220px; display: none; }
-  .tooltip-date { font-weight: 500; margin-bottom: 5px; color: var(--text); }
+  .legend-swatch { width: 14px; height: 14px; border-radius: 3px; }
+  .swatch-all { background: var(--blue); border: 0.5px solid var(--blue-dark); }
+  .swatch-some { background: var(--blue-light); border: 0.5px solid var(--blue-mid); }
+  .swatch-wknd { background: #FFD8A8; border: 0.5px solid #FFB870; }
+  .tooltip { position: fixed; background: var(--bg); border: 0.5px solid var(--border-strong); border-radius: var(--radius-md); padding: 8px 12px; font-size: 12px; color: var(--text); box-shadow: 0 4px 16px rgba(0,0,0,0.12); pointer-events: none; z-index: 9999; max-width: 240px; display: none; }
+  .tooltip-date { font-weight: 500; margin-bottom: 5px; }
   .tooltip-tags { display: flex; flex-wrap: wrap; gap: 3px; }
   .tooltip-tag { font-size: 11px; padding: 2px 7px; border-radius: 999px; background: var(--blue-light); color: var(--blue-dark); }
   .months-grid { display: flex; flex-direction: column; gap: 1.75rem; }
   .month-block { background: var(--bg); border: 0.5px solid var(--border); border-radius: var(--radius-lg); padding: 1.25rem; }
-  .month-name { font-size: 15px; font-weight: 500; color: var(--text); margin-bottom: 12px; padding-bottom: 10px; border-bottom: 0.5px solid var(--border); }
+  .month-name { font-size: 15px; font-weight: 500; margin-bottom: 12px; padding-bottom: 10px; border-bottom: 0.5px solid var(--border); }
   .cal-grid { display: grid; grid-template-columns: repeat(7, 1fr); gap: 3px; }
   .cal-dh { font-size: 10px; color: var(--text-secondary); text-align: center; padding: 5px 2px; font-weight: 500; text-transform: uppercase; letter-spacing: 0.03em; }
   .cal-day { border-radius: 6px; min-height: 56px; padding: 5px 6px; border: 0.5px solid var(--border); }
@@ -93,32 +78,36 @@
   .cal-day.all-off .off-count { color: #B5D4F4; }
   .list-view { display: flex; flex-direction: column; gap: 1.5rem; }
   .list-month { background: var(--bg); border: 0.5px solid var(--border); border-radius: var(--radius-lg); overflow: hidden; }
-  .list-month-hdr { font-size: 14px; font-weight: 500; color: var(--text); padding: 14px 16px; border-bottom: 0.5px solid var(--border); background: var(--bg-secondary); }
+  .list-month-hdr { font-size: 14px; font-weight: 500; padding: 14px 16px; border-bottom: 0.5px solid var(--border); background: var(--bg-secondary); }
   .list-row { display: flex; align-items: flex-start; gap: 12px; padding: 10px 16px; border-bottom: 0.5px solid var(--border); }
   .list-row:last-child { border-bottom: none; }
   .list-date-col { min-width: 90px; }
-  .list-date { font-size: 13px; font-weight: 500; color: var(--text); }
+  .list-date { font-size: 13px; font-weight: 500; }
   .list-dow { font-size: 11px; color: var(--text-secondary); }
   .list-tags { display: flex; flex-wrap: wrap; gap: 4px; }
   .list-tag { font-size: 11px; padding: 3px 8px; border-radius: 999px; background: var(--blue-light); color: var(--blue-dark); font-weight: 500; }
-  .empty-msg { text-align: center; padding: 3rem 1rem; color: var(--text-secondary); font-size: 14px; background: var(--bg); border: 0.5px solid var(--border); border-radius: var(--radius-lg); }
+  .status-box { text-align: center; padding: 3rem 1rem; color: var(--text-secondary); font-size: 14px; border: 0.5px solid var(--border); border-radius: var(--radius-lg); background: var(--bg); }
+  .status-icon { font-size: 26px; margin-bottom: 10px; }
+  .retry-btn { margin-top: 14px; font-size: 13px; padding: 6px 18px; border: 0.5px solid var(--border-strong); border-radius: var(--radius-md); background: var(--bg); color: var(--text); cursor: pointer; font-family: inherit; }
+  .retry-btn:hover { background: var(--bg-secondary); }
 </style>
 </head>
 <body>
-<div id="tooltip" class="tooltip"><div class="tooltip-date" id="tt-date"></div><div class="tooltip-tags" id="tt-tags"></div></div>
+<div id="tooltip" class="tooltip">
+  <div class="tooltip-date" id="tt-date"></div>
+  <div class="tooltip-tags" id="tt-tags"></div>
+</div>
 
 <div class="page">
   <div class="hdr">
     <h1>Warehouse holiday calendar 2026</h1>
-    <p>Public holidays by region — filter by month and location</p>
+    <p>Public holidays by region — data loads live from Google Sheets</p>
   </div>
 
   <div class="controls">
     <div class="ctrl-group">
       <span class="ctrl-label">Month</span>
-      <select id="month-sel">
-        <option value="all">All months</option>
-      </select>
+      <select id="month-sel"><option value="all">All months</option></select>
     </div>
     <div class="ctrl-group">
       <span class="ctrl-label">View</span>
@@ -130,7 +119,7 @@
   </div>
 
   <div class="region-section">
-    <div style="display:flex; align-items:center; gap:10px; flex-wrap:wrap;">
+    <div style="display:flex;align-items:center;gap:10px;flex-wrap:wrap;">
       <span class="ctrl-label">Regions</span>
       <button class="all-none" onclick="toggleAll(true)">All</button>
       <button class="all-none" onclick="toggleAll(false)">None</button>
@@ -151,148 +140,71 @@
 </div>
 
 <script>
-const RAW_CSV = `Month,Date,Day,US,UK,EU,AUSTRALIA,NEW ZEALAND,CAN-OSHAWA,CAN-MONTREAL,INDIA,ISRAEL,SINGAPORE,PHILIPPINES,JAPAN,MALAYSIA,BRAZIL,ARGENTINA,MEXICO,GUATEMALA,COLOMBIA,CHILE,COSTA RICA,UAE,KOREA
-January,2026-01-01,1,OFF,OFF,OFF,OFF,OFF,OFF,OFF,OFF,OFF,OFF,OFF,OFF,OFF,OFF,OFF,OFF,OFF,OFF,OFF,OFF,OFF,OFF
-,2026-01-02,2,,,,OFF,,,,,,,,,,,,,,,,,,
-,2026-01-12,12,,,,,,,,,,,,OFF,,,,,,OFF,,,,
-,2026-01-15,15,,,,,,,,OFF,,,,,,,,,,,,,,
-,2026-01-16,16,,,,,,,,OFF,,,,,,,,,,,,,,
-,2026-01-19,19,OFF,,,,,,,,,,,,,,,,,,,,,
-,2026-01-20,20,,,,,OFF,,,,,,,,,,,,,,,,,,
-February,2026-02-02,2,,,,,,,,,,,,,,,,,,,,OFF,,
-,2026-02-04,4,,,,,,,,,,,,,,,,,,,,,,OFF
-,2026-02-12,12,,,,,,,,,,,,OFF,,,,,,,OFF,,,
-,2026-02-16,16,OFF,,,,,OFF,OFF,,,,,,,,,,,,,,,,
-,2026-02-20,20,,,,,,,,,,,,,,,,,,,,,,OFF
-,2026-02-23,23,,,,,,,,,,,,OFF,,,,,,,,,,,
-March,2026-03-01,1,,OFF,,,,,,,,,,,,,,,,,,,,,
-,2026-03-08,8,,,,,,,,,,,,,,,,,OFF,,,,,,
-,2026-03-17,17,,,,,,,,,,,,,,,,,,,,,,OFF,
-,2026-03-19,19,,,,,,,,,,,,,,,,,,,,,OFF,,
-,2026-03-20,20,,,,,,,,,,OFF,OFF,,OFF,,,,,,,,OFF,
-,2026-03-23,23,,,,,,,,,,,,,,,,,,OFF,,,,
-,2026-03-24,24,,,,,,,,,,,,,,,OFF,,,,,,,
-April,2026-04-01,1,,,,,,,,,OFF,,,,,,,,,,,,,
-,2026-04-02,2,,,,,,,,,OFF,,OFF,,,OFF,OFF,OFF,OFF,OFF,OFF,OFF,,
-,2026-04-03,3,,OFF,OFF,OFF,OFF,OFF,OFF,OFF,OFF,OFF,OFF,,,OFF,OFF,OFF,OFF,OFF,OFF,OFF,,
-,2026-04-04,4,,,,,,,,,,,,,,OFF,,,,,OFF,OFF,,
-,2026-04-06,6,,OFF,OFF,OFF,OFF,OFF,OFF,,,,,,,,,,,,,,,
-,2026-04-07,7,,,,,,,,,,,,,,,,,,,,,,OFF
-,2026-04-14,14,,,,,,,,,,,,,,,OFF,OFF,,,,,,
-,2026-04-17,17,,,,,,,,OFF,,,,,,,,,,,,,,,
-,2026-04-21,21,,,,,,,,,,,,,,,OFF,OFF,,,,,,,
-,2026-04-23,23,,,,,,,,,,,,,,,,,,,,,,,OFF
-,2026-04-29,29,,,,,,,,,,,,OFF,,,,,,,,,,,
-,2026-04-30,30,,,,,,,,,,,,,,,,,,OFF,,,,,,
-May,2026-05-01,1,,,OFF,OFF,OFF,,,OFF,,OFF,OFF,,OFF,,,OFF,OFF,OFF,,,,
-,2026-05-04,4,,,,,,,,,,,,OFF,,,,,,,,,,,
-,2026-05-05,5,OFF,,,,,,,,,,,,,,,,,,,,,,
-,2026-05-07,7,,,,,,,,,,,,,,,,,,,,,,OFF
-,2026-05-11,11,,OFF,,,,,,,,,,,,,,,,,,,,,,
-,2026-05-14,14,,,,,,,,,,,,,,,,,,,,,OFF,,
-,2026-05-18,18,,,,,,,,,,,,,,,,,,,,,,OFF,
-,2026-05-25,25,OFF,OFF,,,,,,,,,,,,,,,,,,,,,
-,2026-05-28,28,,,,,OFF,,,,,,,,,,OFF,,,,,,,OFF,
-,2026-05-29,29,,,,,,,,,,,,,,,,,OFF,,,,,,
-June,2026-06-01,1,,,,,,,,,,,,,,,,,,,,,,OFF
-,2026-06-02,2,,OFF,,,,,,,,,,,,,,,,,,,,,
-,2026-06-12,12,,,,,,,,,,,,,,,OFF,,,,,,,
-,2026-06-13,13,,,,,,,,,,,,,,,,,,,,,,,OFF
-,2026-06-15,15,,,,,,,,,,,,,,,,,OFF,,,,,,
-,2026-06-19,19,OFF,,,,,,,,,,,,,,,,,,,,,,
-,2026-06-20,20,,,,,,,,,,OFF,,,,,,,,,,,,,,
-,2026-06-24,24,,,,,,,,,,,,,,,,,,OFF,,OFF,,,
-,2026-06-29,29,,,,,,,,,,,,,,,,,,,,,,,OFF
-July,2026-07-01,1,,,,,,,OFF,OFF,,,,,,,,,,,,,,,
-,2026-07-04,4,OFF,,,,,,,,,,,,,,,,,,,,,,
-,2026-07-09,9,,,,,,,,,,,,,,,,,,,,,OFF,OFF,
-,2026-07-17,17,,,,,,,,,,,,,,,,,,,,,,OFF,
-,2026-07-20,20,,,,,,,,,,,,,,,,,,OFF,,,,,,
-August,2026-08-01,1,,,,,,,,,,,,,,,,,,,,,,
-,2026-08-07,7,,,,,,,,,,,,,,,,,,OFF,,,,
-,2026-08-09,9,,,,,,,,,,,,,,,,,,,,,,,OFF
-,2026-08-10,10,,,,,,,,,,,,,,,,,OFF,,,,,,
-,2026-08-15,15,,,,OFF,,,,,,,,,,,OFF,,,,,,,
-,2026-08-17,17,,,,,,,,,,,,,,,,,,,,,OFF,,
-,2026-08-25,25,,,,OFF,,,,,,,,,,,,,,,,,,,
-,2026-08-31,31,,OFF,,,,,,,,,,,,,,,,,,,,,
-September,2026-09-07,7,OFF,,,,,OFF,OFF,,,,,,,,,,,,,,,,
-,2026-09-10,10,,,,,,,,,,,,,,,,,,,,,,OFF
-,2026-09-14,14,,,,,,,,,,,,,,,,OFF,,OFF,,,,
-,2026-09-16,16,,,,,,,,,,,,,,,,,OFF,,,,,,
-,2026-09-21,21,,,,,,,,,,,,,,OFF,,,,,,,,,
-,2026-09-22,22,,,,,,,,,,,,,,,,,,,,,,OFF,
-,2026-09-23,23,,,,,,,,,,,,,,OFF,,,,,,,,,,
-October,2026-10-02,2,,,,,,,,OFF,,,,,,,,,,,,,,,
-,2026-10-05,5,,,,,,,,,,,,,,,,,,,,,,,,OFF
-,2026-10-09,9,,,,,,,,,,,,,,,,,,,,,,,,OFF
-,2026-10-12,12,OFF,,,,,OFF,OFF,,,,,,,OFF,,,,OFF,,,,
-,2026-10-20,20,,,,,,,,,,,,,,,,,OFF,,,,,
-,2026-10-25,25,,,,,,,,,,,,,,,,,,,,OFF,,,
-,2026-10-26,26,,,,,,,,,,,,,,,,,,,,,,,OFF
-,2026-10-31,31,,,,,,,,,,,,,,,,,,OFF,,,,,,
-November,2026-11-01,1,,,,,,,,,,,,,,,,OFF,,,OFF,OFF,,OFF,
-,2026-11-02,2,,,,,,,,,,,,,,,OFF,,,,,,,
-,2026-11-11,11,,,,,,,,,,,,,,,,OFF,,OFF,,,,
-,2026-11-15,15,,,,,,,,,,,,,,,OFF,,,,,,,
-,2026-11-20,20,,,,,,,,,,,,,,,,,OFF,,,,,,
-,2026-11-25,25,,,,,,,,,,,,,,,,,,,,,,OFF,
-,2026-11-26,26,OFF,,,,,,,,,,,,,,,,,,,,,,
-,2026-11-27,27,OFF,,,,,,,,,,,,,,,,,,,,,,
-,2026-11-30,30,,,,,,,,,,,,,,,,,,,,,,,OFF
-December,2026-12-08,8,,,,,,,,,,,,,,,,,,,,,,,OFF
-,2026-12-12,12,,,,,,,,,,,,,,,,,OFF,,,,,,
-,2026-12-24,24,,,,,,,,,,,,,,,,,,,,,,,OFF,
-,2026-12-25,25,OFF,OFF,OFF,OFF,OFF,OFF,OFF,OFF,,OFF,OFF,OFF,OFF,OFF,OFF,OFF,OFF,OFF,OFF,OFF,OFF,OFF
-,2026-12-26,26,,OFF,OFF,,,,,,,,,,,,,,,,,,,
-,2026-12-28,28,,,,OFF,OFF,,,,,,,,,,,,,,,,,`;
+const SHEET_ID = '1q-3OHTK_jjmz5GGqEyVdNJYMVFgEDohBvbk1uu02PNM';
+const GID     = '2000852454';
+const CSV_URL = `https://docs.google.com/spreadsheets/d/${SHEET_ID}/export?format=csv&gid=${GID}`;
 
 const REGIONS = ['US','UK','EU','AUSTRALIA','NEW ZEALAND','CAN-OSHAWA','CAN-MONTREAL','INDIA','ISRAEL','SINGAPORE','PHILIPPINES','JAPAN','MALAYSIA','BRAZIL','ARGENTINA','MEXICO','GUATEMALA','COLOMBIA','CHILE','COSTA RICA','UAE','KOREA'];
-const MONTHS = ['January','February','March','April','May','June','July','August','September','October','November','December'];
-const DAYS_SHORT = ['Sun','Mon','Tue','Wed','Thu','Fri','Sat'];
-const MONTHS_SHORT = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+const MONTHS  = ['January','February','March','April','May','June','July','August','September','October','November','December'];
+const DSHORT  = ['Sun','Mon','Tue','Wed','Thu','Fri','Sat'];
+const MSHORT  = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
 
 let activeRegions = new Set(REGIONS);
-let activeMonth = 'all';
-let viewMode = 'list';
+let activeMonth   = 'all';
+let viewMode      = 'list';
+let allData       = [];
 
-function parseCSV() {
-  const rows = RAW_CSV.trim().split('\n');
-  const headers = rows[0].split(',');
-  const data = [];
-  let curMonth = '';
+function parseCSV(raw) {
+  const rows    = raw.trim().split('\n');
+  const headers = rows[0].split(',').map(h => h.trim().replace(/^"|"$/g, ''));
+  const data    = [];
+  let curMonth  = '';
   for (let i = 1; i < rows.length; i++) {
-    const cols = rows[i].split(',');
+    const cols   = rows[i].split(',').map(c => c.trim().replace(/^"|"$/g, ''));
     if (cols[0]) curMonth = cols[0];
-    const date = cols[1];
     const dayNum = parseInt(cols[2]);
-    const offRegions = [];
+    if (!cols[1] || isNaN(dayNum)) continue;
+    const off = [];
     for (let j = 3; j < headers.length; j++) {
-      if (cols[j] === 'OFF') offRegions.push(headers[j]);
+      if (cols[j] === 'OFF') off.push(headers[j]);
     }
-    if (offRegions.length > 0) {
-      data.push({ month: curMonth, date, day: dayNum, offRegions });
-    }
+    if (off.length) data.push({ month: curMonth, date: cols[1], day: dayNum, offRegions: off });
   }
   return data;
 }
 
-const allData = parseCSV();
+function setStatus(html) {
+  document.getElementById('view-list').innerHTML = html;
+  document.getElementById('view-cal').innerHTML  = '';
+  document.getElementById('stats-bar').innerHTML = '';
+}
+
+async function init() {
+  setStatus(`<div class="status-box"><div class="status-icon">⏳</div>Loading holiday data from Google Sheets…</div>`);
+  try {
+    const res = await fetch(CSV_URL);
+    if (!res.ok) throw new Error('HTTP ' + res.status);
+    allData = parseCSV(await res.text());
+    buildMonthSel();
+    render();
+  } catch (e) {
+    setStatus(`<div class="status-box"><div class="status-icon">⚠️</div>
+      Could not load data. Make sure the sheet is set to public (Anyone with the link → Viewer).
+      <br><button class="retry-btn" onclick="init()">Retry</button></div>`);
+  }
+}
 
 function filteredData() {
-  return allData.filter(d => {
-    const monthOk = activeMonth === 'all' || d.month === activeMonth;
-    const regMatch = d.offRegions.some(r => activeRegions.has(r));
-    return monthOk && regMatch;
-  });
+  return allData.filter(d =>
+    (activeMonth === 'all' || d.month === activeMonth) &&
+    d.offRegions.some(r => activeRegions.has(r))
+  );
 }
 
 function buildMonthSel() {
   const s = document.getElementById('month-sel');
-  MONTHS.forEach(m => {
-    const o = document.createElement('option');
-    o.value = m; o.textContent = m; s.appendChild(o);
-  });
+  s.innerHTML = '<option value="all">All months</option>';
+  MONTHS.forEach(m => { const o = document.createElement('option'); o.value = m; o.textContent = m; s.appendChild(o); });
   s.onchange = () => { activeMonth = s.value; render(); };
 }
 
@@ -303,174 +215,109 @@ function buildPills() {
     const p = document.createElement('span');
     p.className = 'region-pill' + (activeRegions.has(r) ? ' on' : '');
     p.textContent = r;
-    p.onclick = () => {
-      if (activeRegions.has(r)) activeRegions.delete(r);
-      else activeRegions.add(r);
-      render();
-    };
+    p.onclick = () => { activeRegions.has(r) ? activeRegions.delete(r) : activeRegions.add(r); render(); };
     c.appendChild(p);
   });
 }
 
-function toggleAll(on) {
-  if (on) REGIONS.forEach(r => activeRegions.add(r));
-  else activeRegions.clear();
-  render();
-}
+function toggleAll(on) { if (on) REGIONS.forEach(r => activeRegions.add(r)); else activeRegions.clear(); render(); }
 
 function updateStats(fd) {
-  const totalDays = fd.length;
-  const regSet = new Set();
-  fd.forEach(d => d.offRegions.forEach(r => { if (activeRegions.has(r)) regSet.add(r); }));
-  const months = new Set(fd.map(d => d.month)).size;
+  const regs = new Set(); fd.forEach(d => d.offRegions.forEach(r => { if (activeRegions.has(r)) regs.add(r); }));
   document.getElementById('stats-bar').innerHTML = `
-    <div class="stat"><div class="stat-label">Holiday days</div><div class="stat-val">${totalDays}</div></div>
-    <div class="stat"><div class="stat-label">Regions affected</div><div class="stat-val">${regSet.size}</div></div>
-    <div class="stat"><div class="stat-label">Months shown</div><div class="stat-val">${months}</div></div>
-  `;
+    <div class="stat"><div class="stat-label">Holiday days</div><div class="stat-val">${fd.length}</div></div>
+    <div class="stat"><div class="stat-label">Regions affected</div><div class="stat-val">${regs.size}</div></div>
+    <div class="stat"><div class="stat-label">Months shown</div><div class="stat-val">${new Set(fd.map(d => d.month)).size}</div></div>`;
 }
 
 function renderCal(fd) {
   const byMonth = {};
   MONTHS.forEach(m => byMonth[m] = {});
   fd.forEach(d => {
-    const activeOff = d.offRegions.filter(r => activeRegions.has(r));
-    if (activeOff.length > 0) {
-      if (!byMonth[d.month]) byMonth[d.month] = {};
-      byMonth[d.month][d.day] = activeOff;
-    }
+    const ao = d.offRegions.filter(r => activeRegions.has(r));
+    if (ao.length) { if (!byMonth[d.month]) byMonth[d.month] = {}; byMonth[d.month][d.day] = ao; }
   });
-
   const months = activeMonth === 'all' ? MONTHS : [activeMonth];
-  let html = '<div class="months-grid">';
-  let anyRendered = false;
-
+  let html = '<div class="months-grid">'; let any = false;
   months.forEach(m => {
-    const entries = byMonth[m] || {};
-    if (Object.keys(entries).length === 0) return;
-    anyRendered = true;
-    const year = 2026;
-    const mIdx = MONTHS.indexOf(m);
-    const firstDow = new Date(year, mIdx, 1).getDay();
-    const daysInMonth = new Date(year, mIdx + 1, 0).getDate();
-
+    const E = byMonth[m] || {};
+    if (!Object.keys(E).length) return;
+    any = true;
+    const mi = MONTHS.indexOf(m), fd0 = new Date(2026, mi, 1).getDay(), dim = new Date(2026, mi + 1, 0).getDate();
     html += `<div class="month-block"><div class="month-name">${m} 2026</div><div class="cal-grid">`;
-    DAYS_SHORT.forEach(d => { html += `<div class="cal-dh">${d}</div>`; });
-    for (let i = 0; i < firstDow; i++) html += `<div class="cal-day empty"></div>`;
-    for (let d = 1; d <= daysInMonth; d++) {
-      const dow = (firstDow + d - 1) % 7;
-      const isWeekend = dow === 0 || dow === 6;
-      const offs = entries[d];
-      let cls = '';
-      if (offs) cls = (offs.length >= activeRegions.size && activeRegions.size > 0) ? 'all-off' : 'has-off';
-      else if (isWeekend) cls = 'weekend';
-      html += `<div class="cal-day ${cls}" ${offs ? `data-offs="${offs.join('|')}" data-date="${DAYS_SHORT[(firstDow + d - 1) % 7]}, ${m} ${d}"` : ''}>`;
-      html += `<div class="day-num">${d}</div>`;
+    DSHORT.forEach(d => { html += `<div class="cal-dh">${d}</div>`; });
+    for (let i = 0; i < fd0; i++) html += `<div class="cal-day empty"></div>`;
+    for (let d = 1; d <= dim; d++) {
+      const dow = (fd0 + d - 1) % 7, wknd = dow === 0 || dow === 6, offs = E[d];
+      const cls = offs ? (offs.length >= activeRegions.size && activeRegions.size > 0 ? 'all-off' : 'has-off') : (wknd ? 'weekend' : '');
+      const da  = offs ? `data-offs="${offs.join('|')}" data-date="${DSHORT[(fd0+d-1)%7]}, ${m} ${d}"` : '';
+      html += `<div class="cal-day ${cls}" ${da}><div class="day-num">${d}</div>`;
       if (offs) {
-        const shown = offs.slice(0, 10);
-        html += `<div class="off-dots">${shown.map(() => '<div class="off-dot"></div>').join('')}</div>`;
+        html += `<div class="off-dots">${offs.slice(0,10).map(() => '<div class="off-dot"></div>').join('')}</div>`;
         html += `<div class="off-count">${offs.length} region${offs.length !== 1 ? 's' : ''}</div>`;
       }
       html += `</div>`;
     }
     html += `</div></div>`;
   });
-
   html += '</div>';
-  if (!anyRendered) html = `<div class="empty-msg">No holidays match your current filters.</div>`;
-  document.getElementById('view-cal').innerHTML = html;
+  document.getElementById('view-cal').innerHTML = any ? html : `<div class="status-box"><div class="status-icon">📭</div>No holidays match your filters.</div>`;
 }
 
 function renderList(fd) {
-  if (fd.length === 0) {
-    document.getElementById('view-list').innerHTML = `<div class="empty-msg">No holidays match your current filters.</div>`;
-    return;
-  }
+  if (!fd.length) { document.getElementById('view-list').innerHTML = `<div class="status-box"><div class="status-icon">📭</div>No holidays match your filters.</div>`; return; }
   const byMonth = {};
   fd.forEach(d => {
-    const activeOff = d.offRegions.filter(r => activeRegions.has(r));
-    if (activeOff.length > 0) {
-      if (!byMonth[d.month]) byMonth[d.month] = [];
-      byMonth[d.month].push({ ...d, activeOff });
-    }
+    const ao = d.offRegions.filter(r => activeRegions.has(r));
+    if (ao.length) { if (!byMonth[d.month]) byMonth[d.month] = []; byMonth[d.month].push({ ...d, ao }); }
   });
   const months = activeMonth === 'all' ? MONTHS : [activeMonth];
-  let html = '<div class="list-view">';
-  let anyRendered = false;
+  let html = '<div class="list-view">'; let any = false;
   months.forEach(m => {
-    const entries = byMonth[m];
-    if (!entries || entries.length === 0) return;
-    anyRendered = true;
+    const E = byMonth[m]; if (!E || !E.length) return; any = true;
     html += `<div class="list-month"><div class="list-month-hdr">${m} 2026</div>`;
-    entries.forEach(e => {
-      const dateObj = new Date(e.date);
-      const dow = DAYS_SHORT[dateObj.getDay()];
-      const mShort = MONTHS_SHORT[MONTHS.indexOf(e.month)];
-      html += `<div class="list-row">
-        <div class="list-date-col">
-          <div class="list-date">${mShort} ${e.day}</div>
-          <div class="list-dow">${dow}</div>
-        </div>
-        <div class="list-tags">${e.activeOff.map(r => `<span class="list-tag">${r}</span>`).join('')}</div>
-      </div>`;
+    E.forEach(e => {
+      const dow = DSHORT[new Date(e.date).getDay()], ms = MSHORT[MONTHS.indexOf(e.month)];
+      html += `<div class="list-row"><div class="list-date-col"><div class="list-date">${ms} ${e.day}</div><div class="list-dow">${dow}</div></div><div class="list-tags">${e.ao.map(r => `<span class="list-tag">${r}</span>`).join('')}</div></div>`;
     });
     html += `</div>`;
   });
   html += '</div>';
-  if (!anyRendered) html = `<div class="empty-msg">No holidays match your current filters.</div>`;
-  document.getElementById('view-list').innerHTML = html;
+  document.getElementById('view-list').innerHTML = any ? html : `<div class="status-box"><div class="status-icon">📭</div>No holidays match your filters.</div>`;
 }
 
 function setView(v) {
   viewMode = v;
-  document.getElementById('view-cal').style.display = v === 'cal' ? 'block' : 'none';
-  document.getElementById('view-list').style.display = v === 'list' ? 'block' : 'none';
-  document.getElementById('btn-cal').className = 'tog-btn' + (v === 'cal' ? ' active' : '');
+  document.getElementById('view-cal').style.display  = v === 'cal'  ? 'block' : 'none';
+  document.getElementById('view-list').style.display  = v === 'list' ? 'block' : 'none';
+  document.getElementById('btn-cal').className  = 'tog-btn' + (v === 'cal'  ? ' active' : '');
   document.getElementById('btn-list').className = 'tog-btn' + (v === 'list' ? ' active' : '');
-  if (v === 'cal') renderCal(filteredData());
-  else renderList(filteredData());
+  v === 'cal' ? renderCal(filteredData()) : renderList(filteredData());
 }
 
-function render() {
-  buildPills();
-  const fd = filteredData();
-  updateStats(fd);
-  if (viewMode === 'cal') renderCal(fd);
-  else renderList(fd);
-}
+function render() { buildPills(); const fd = filteredData(); updateStats(fd); viewMode === 'cal' ? renderCal(fd) : renderList(fd); }
 
-buildMonthSel();
-render();
-
+// Tooltip
 const tooltip = document.getElementById('tooltip');
-const ttDate = document.getElementById('tt-date');
-const ttTags = document.getElementById('tt-tags');
-
 document.addEventListener('mouseover', e => {
   const cell = e.target.closest('.cal-day[data-offs]');
   if (!cell) { tooltip.style.display = 'none'; return; }
-  const offs = cell.dataset.offs.split('|');
-  ttDate.textContent = cell.dataset.date;
-  ttTags.innerHTML = offs.map(r => `<span class="tooltip-tag">${r}</span>`).join('');
+  document.getElementById('tt-date').textContent = cell.dataset.date;
+  document.getElementById('tt-tags').innerHTML = cell.dataset.offs.split('|').map(r => `<span class="tooltip-tag">${r}</span>`).join('');
   tooltip.style.display = 'block';
 });
-
 document.addEventListener('mousemove', e => {
   if (tooltip.style.display === 'none') return;
-  const x = e.clientX + 14;
-  const y = e.clientY + 14;
-  const tw = tooltip.offsetWidth;
-  const th = tooltip.offsetHeight;
-  tooltip.style.left = (x + tw > window.innerWidth - 8 ? e.clientX - tw - 10 : x) + 'px';
-  tooltip.style.top = (y + th > window.innerHeight - 8 ? e.clientY - th - 10 : y) + 'px';
+  const x = e.clientX + 14, y = e.clientY + 14;
+  tooltip.style.left = (x + tooltip.offsetWidth  > window.innerWidth  - 8 ? e.clientX - tooltip.offsetWidth  - 10 : x) + 'px';
+  tooltip.style.top  = (y + tooltip.offsetHeight > window.innerHeight - 8 ? e.clientY - tooltip.offsetHeight - 10 : y) + 'px';
+});
+document.addEventListener('mouseout', e => {
+  if (e.target.closest('.cal-day[data-offs]') && (!e.relatedTarget || !e.relatedTarget.closest('.cal-day[data-offs]')))
+    tooltip.style.display = 'none';
 });
 
-document.addEventListener('mouseout', e => {
-  if (!e.target.closest('.cal-day[data-offs]')) return;
-  if (!e.relatedTarget || !e.relatedTarget.closest('.cal-day[data-offs]')) {
-    tooltip.style.display = 'none';
-  }
-});
+init();
 </script>
 </body>
 </html>
