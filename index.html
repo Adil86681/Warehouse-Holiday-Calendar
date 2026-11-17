@@ -144,12 +144,12 @@ const SHEET_ID = '1q-3OHTK_jjmz5GGqEyVdNJYMVFgEDohBvbk1uu02PNM';
 const GID     = '2000852454';
 const CSV_URL = `https://docs.google.com/spreadsheets/d/${SHEET_ID}/export?format=csv&gid=${GID}`;
 
-const REGIONS = ['US','UK','EU','AUSTRALIA','NEW ZEALAND','CAN-OSHAWA','CAN-MONTREAL','INDIA','ISRAEL','SINGAPORE','PHILIPPINES','JAPAN','MALAYSIA','BRAZIL','ARGENTINA','MEXICO','GUATEMALA','COLOMBIA','CHILE','COSTA RICA','UAE','KOREA'];
+let REGIONS = []; // populated from the sheet's column headers on load
 const MONTHS  = ['January','February','March','April','May','June','July','August','September','October','November','December'];
 const DSHORT  = ['Sun','Mon','Tue','Wed','Thu','Fri','Sat'];
 const MSHORT  = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
 
-let activeRegions = new Set(REGIONS);
+let activeRegions = new Set();
 let activeMonth   = 'all';
 let viewMode      = 'list';
 let allData       = [];
@@ -157,6 +157,8 @@ let allData       = [];
 function parseCSV(raw) {
   const rows    = raw.trim().split('\n');
   const headers = rows[0].split(',').map(h => h.trim().replace(/^"|"$/g, ''));
+  // Columns 0-2 are Month, Date, Day; every column after that is a region
+  REGIONS = headers.slice(3).filter(Boolean);
   const data    = [];
   let curMonth  = '';
   for (let i = 1; i < rows.length; i++) {
@@ -185,6 +187,7 @@ async function init() {
     const res = await fetch(CSV_URL);
     if (!res.ok) throw new Error('HTTP ' + res.status);
     allData = parseCSV(await res.text());
+    REGIONS.forEach(r => activeRegions.add(r)); // new regions start on; deselected ones stay off
     buildMonthSel();
     render();
   } catch (e) {
